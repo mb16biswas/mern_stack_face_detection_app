@@ -3,6 +3,7 @@ import {Redirect} from "react-router-dom"
 import Mainpage from "../Mainpage/Mainpage"
 import Navbar from "../Navbar/Navbar"
 import Board from "../Board/Board"
+import "./Admin.css"
 
 
 class Admin extends Component{
@@ -11,7 +12,7 @@ class Admin extends Component{
         let a = ""
         let data = sessionStorage.getItem("mydata")
         data = JSON.parse(data)
-        console.log("admin" , data)
+    
         
         if(data !== null){
             a = "admin"
@@ -41,7 +42,7 @@ class Admin extends Component{
     render(){
         if(this.state.test === "admin"){
             return(
-                <div>
+                <div className = "adm">
                     <Navbar  logout = {this.logout}  score = {this.score}  cur_page =  {this.cur_page} />
                     <Mainpage/>
                     
@@ -53,7 +54,7 @@ class Admin extends Component{
         }
         else if(this.state.test === "score"){
             return(
-                <div>
+                <div className = "adm">
                     <Navbar logout = {this.logout}  score = {this.score}  cur_page =  {this.cur_page}/>
                     <Board/>
               
