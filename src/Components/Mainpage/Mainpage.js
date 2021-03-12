@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Particles from 'react-particles-js';
 import Clarifai from 'clarifai';
 import FaceRecognition from '../Facerec/Facerec';
-
-
 import "./Mainpage.css"
 import ImageLinkForm from '../Imagelinkform/Imagelinkform';
 import Rank from '../Rank/Rank';
@@ -14,7 +12,7 @@ import axios from 'axios';
 //You must add your own API key here from Clarifai.
 
 const app = new Clarifai.App({
- apiKey: 'use your api key'
+ apiKey: 'use your key'
 });
 
 const particlesOptions = {
@@ -47,7 +45,8 @@ class Mainpage extends Component {
       id: "",
       name:  ""  ,
          
-      entries: 0 
+      entries: 0  , 
+      email : ""
 
       
     
@@ -61,25 +60,23 @@ class Mainpage extends Component {
     if(store !== null){
       store = JSON.parse(store)
      
-      const name = store.name 
+      // const name = store.name 
+      const email = store.email
       
-      const url = "http://localhost:5000/users/" + name 
+      const url = "http://localhost:5000/users/" + email
       axios.get(url)
       .then((res) =>{
         
         this.setState({
           id : res.data._id , 
           name : res.data.username , 
-          entries : res.data.count 
+          entries : res.data.count  , 
+          email : email
         })
   
       })
-
     }
-
-
-
-  }
+    }
 
   calculateFaceLocation = (data) => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
@@ -129,7 +126,7 @@ class Mainpage extends Component {
           const d = c.cou  
           this.setState({entries : d   })
           ///add/:name
-          const uri = "http://localhost:5000/users//add/" + this.state.name 
+          const uri = "http://localhost:5000/users/add/" + this.state.email
           axios.post(uri , c )
           .then(()=>{
             console.log("response success ")
