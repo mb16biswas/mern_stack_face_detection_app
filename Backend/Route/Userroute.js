@@ -14,8 +14,8 @@ router.route('/all').get((req, res) => {
 
 
 
-router.route('/login/:name/:password').get((req, res) => {
-  const name = req.params.name
+router.route('/login/:email/:password').get((req, res) => {
+  const email = req.params.email
   const password = req.params.password 
   
   /*
@@ -28,7 +28,7 @@ router.route('/login/:name/:password').get((req, res) => {
 
   */
   
-  User.findOne({username : name})
+  User.findOne({email : email})
     .then((user) =>{
       
       if(bcrypt.compareSync( password, user.password)){
@@ -52,18 +52,18 @@ router.route('/login/:name/:password').get((req, res) => {
 });
 
 
-router.route('/:name').get((req, res) => {
-    const name = req.params.name 
-    User.findOne({username : name})
+router.route('/:email').get((req, res) => {
+    const email = req.params.email
+    User.findOne({email : email})
       .then(users => res.json(users))
       .catch(err => res.status(400).json('Error: ' + err));
   });
   
 
-router.route('/add/:name').post((req, res) => {
-    const name = req.params.name 
+router.route('/add/:email').post((req, res) => {
+    const email = req.params.email
     const entry = req.body.cou 
-    User.findOne({username : name})
+    User.findOne({email : email})
     .then((user)=>{
       user.count = entry 
 
