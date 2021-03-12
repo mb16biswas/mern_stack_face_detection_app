@@ -51,19 +51,12 @@ class Board extends Component {
 
           }
           
-        
-       
-      })
+        })
       .catch((err) =>{
           console.log(err)
       })
       
-
-     
-
- 
-
-  }
+}
   scoreboard() {
     return this.state.data.map(i => {
       return <Card name = {i.username} email = {i.email} count = {i.count} key = {i._id}/>;
@@ -76,7 +69,7 @@ class Board extends Component {
      
     if(this.state.data.length !== 0){
         return (
-            <div>
+            <div className = "brd">
                 <h1>Score board</h1>
                 <table className="table">
                     <thead className="thead-light">
