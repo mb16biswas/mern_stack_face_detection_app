@@ -76,13 +76,13 @@ class  Sign extends Component{
                 email : this.state.email 
             }
            
-            axios.post("http://localhost:5000/users/add" , user)
+            axios.post("https://face-deploy.herokuapp.com/users/add" , user)
             .then((res) => {
                 a = res.data 
                 // console.log("sign in ..... value of a  " , a)
                 if(a === "false"){
                     this.setState({test : "sign"})
-                    alert("invalid  ..")
+                    alert("this email already exits  ..")
                    
 
                 }
@@ -131,7 +131,7 @@ class  Sign extends Component{
         let pass 
        
 
-        const url = "http://localhost:5000/users/login/" + this.state.email + "/" + this.state.password 
+        const url = "https://face-deploy.herokuapp.com/users/login/" + this.state.email + "/" + this.state.password 
       
         
         axios.get(url)
