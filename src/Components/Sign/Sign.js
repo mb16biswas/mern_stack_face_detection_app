@@ -76,7 +76,7 @@ class  Sign extends Component{
                 email : this.state.email 
             }
            
-            axios.post("https://face-deploy.herokuapp.com/users/add" , user)
+            axios.post(`${process.env.REACT_APP_BACKEND_URL}users/add`, user)
             .then((res) => {
                 a = res.data 
                 // console.log("sign in ..... value of a  " , a)
@@ -131,7 +131,7 @@ class  Sign extends Component{
         let pass 
        
 
-        const url = "https://face-deploy.herokuapp.com/users/login/" + this.state.email + "/" + this.state.password 
+        const url = `${process.env.REACT_APP_BACKEND_URL}users/login/` + this.state.email + "/" + this.state.password 
       
         
         axios.get(url)
@@ -198,7 +198,7 @@ class  Sign extends Component{
                                             value = {this.state.name} 
                                             fullWidth required  style = {{padding : 13}}/>
 
-                                <TextField label='Emaili' placeholder='email'
+                                <TextField label='Email' placeholder='email'
                                         onChange={this.onchangeemail}
                                         value = {this.state.email}
                                         type='email' 
@@ -250,7 +250,7 @@ class  Sign extends Component{
                                 <h2>Log in </h2>
                             </Grid>
                             <form onSubmit = {this.log_in} >
-                                <TextField label='Emaili' placeholder='email'
+                                <TextField label='Email' placeholder='email'
                                         type = "email"
                                         onChange={this.onchangeemail1}
                                         value = {this.state.email}
