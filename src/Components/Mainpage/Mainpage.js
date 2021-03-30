@@ -12,7 +12,7 @@ import axios from 'axios';
 //You must add your own API key here from Clarifai.
 
 const app = new Clarifai.App({
- apiKey: 'use your key'
+ apiKey: '9b213b4d6cfe4b879653d78f6f54e0c6'
 });
 
 const particlesOptions = {
@@ -63,7 +63,7 @@ class Mainpage extends Component {
       // const name = store.name 
       const email = store.email
       
-      const url = "http://localhost:5000/users/" + email
+      const url = "https://face-deploy.herokuapp.com/users/" + email
       axios.get(url)
       .then((res) =>{
         
@@ -126,7 +126,7 @@ class Mainpage extends Component {
           const d = c.cou  
           this.setState({entries : d   })
           ///add/:name
-          const uri = "http://localhost:5000/users/add/" + this.state.email
+          const uri = "https://face-deploy.herokuapp.com/users/add/" + this.state.email
           axios.post(uri , c )
           .then(()=>{
             console.log("response success ")
