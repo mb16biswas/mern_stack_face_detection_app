@@ -27,7 +27,7 @@ class Board extends Component {
   componentDidMount() {
       
     let info  
-    axios.get("http://localhost:5000/users/all")
+    axios.get("https://face-deploy.herokuapp.com/users/all")
       .then(res => {
           
         //   https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
@@ -119,3 +119,4 @@ class Board extends Component {
   }
 }
 export default Board 
+
