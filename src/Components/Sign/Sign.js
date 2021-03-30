@@ -139,7 +139,7 @@ class  Sign extends Component{
         .then((res) =>{
             
             pass = res.data 
-            console.log("log in .... route output " , pass )
+            
           
             if(pass === "true"){
                 let obj = {name : this.state.name , email: this.state.email ,  auth : "true"}
