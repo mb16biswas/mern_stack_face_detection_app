@@ -8,3 +8,5 @@ it is a webapp , created with mern stack , the user auth is done by sessional st
 #Run npm start 
 
 #you must have your clarifai api key and mongodb url 
+
+web app is live here -> https://musing-benz-643072.netlify.app/
